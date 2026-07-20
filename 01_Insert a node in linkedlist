@@ -1,0 +1,20 @@
+ 
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class Solution:
+    def insertAtEnd(self, head, x):
+        if head == None:
+            node = Node(x)
+            head = node
+            return head
+        else:
+            node = head
+            while(node.next != None):
+                node = node.next
+            new_node = Node(x)
+            node.next = new_node
+            return head
+        
