@@ -1,0 +1,30 @@
+
+class Node:
+	def __init__(self, data):
+		self.data = data
+		self.next = None
+		self.prev = None
+
+class Solution:
+    def insertAtPos(self, head, p, x):
+        node = head
+        count = 0
+        while(node.next != None):
+            if count == p:
+                new_Node = Node(x)
+                if node.next is not None:
+                    node.next.prev = new_Node
+                new_Node.next = node.next
+                new_Node.prev = node
+                node.next = new_Node
+                return head
+            count += 1
+            node = node.next
+        if count == p:
+            new_Node = Node(x)
+            new_Node.next = node.next
+            new_Node.prev = node
+            node.next = new_Node
+            return head
+                
+        
