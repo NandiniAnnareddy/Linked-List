@@ -1,0 +1,23 @@
+
+class Node:
+    def __init__(self, val):
+        self.data = val
+        self.next = None
+        self.prev = None
+
+class Solution:
+    def reverse(self, head):
+        if head is None or head.next is None:
+            return head
+        while(head.next != None):
+            head = head.next
+        head.next,head.prev = head.prev,head.next
+        node = head.next
+        while(node.prev != None):
+            temp = node.prev    
+            node.prev, node.next = node.next, node.prev
+            node = temp
+        node.prev,node.next = node.next,node.prev
+        return head
+            
+        
