@@ -1,0 +1,19 @@
+class Solution:
+    def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if head == None or head.next == None:
+            return head
+
+        node1 = head              # odd pointer
+        node2 = head.next         # even pointer
+        evenHead = node2          # save start of even list
+
+        while node2 != None and node2.next != None:
+            node1.next = node2.next
+            node1 = node1.next
+
+            node2.next = node1.next
+            node2 = node2.next
+
+        node1.next = evenHead
+
+        return head
